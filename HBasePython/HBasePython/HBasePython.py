@@ -7,14 +7,13 @@ logging.basicConfig(level=logging.DEBUG)
 batch_size = 1000
 host = "localhost"
 file_path = "myfoodapediadata\Food_Display_Table.csv"
-namespace = "hw"
 row_count = 0
 start_time = time.time()
 table_name = "food"
 
 
 def connecttohbase():
-    conn = happybase.Connection(host = host, autoconnect=False ,port =9095,table_prefix=namespace,table_prefix_separator = ",", timeout=86400, protocol="compact", transport="framed" )
+    conn = happybase.Connection(host = host, autoconnect=False ,port =9095,table_prefix_separator = ",", timeout=86400, protocol="compact", transport="framed" )
     conn.open()
     table = conn.table(table_name)
     batch = table.batch(batch_size= batch_size)
